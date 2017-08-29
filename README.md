@@ -13,10 +13,12 @@ java -jar target/dropwizard-rest-stub-1.0-SNAPSHOT.jar server config.yml
 **Dockerize app**
 
 1) build the docker image
+
 docker build -t dropwizard-rest-stub .
 
 
 2) Run the docker container
+
 docker run -it -p 9000:9000 -p 9001:9001 -e ENV_VARIABLE_VERSION=1.1.1 dropwizard-rest-stub
 
 
