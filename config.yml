@@ -1,0 +1,10 @@
+version: ${ENV_VARIABLE_VERSION:- 0.0.2}
+
+# Change default server ports
+server:
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
