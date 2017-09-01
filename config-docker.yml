@@ -9,6 +9,9 @@ server:
   - type: http
     port: 9001
 
+swagger:
+  resourcePackage: com.benaowen.reststub.resources
+
 # Log to console for Docker
 logging:
   appenders:
