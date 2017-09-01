@@ -36,9 +36,9 @@ public class PersonDB {
         return persons.size();
     }
 
-    public static void remove() {
+    public static void remove(int id) {
         if (!persons.keySet().isEmpty()) {
-            persons.remove(persons.keySet().toArray()[0]);
+            persons.remove(id);
         }
     }
 

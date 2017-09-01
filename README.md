@@ -26,12 +26,14 @@ docker run -it -p 9000:9000 -p 9001:9001 -e ENV_VARIABLE_VERSION=1.1.1 dropwizar
 
 The sample app will have the following endpoints
 ```
-GET     /person/all (...)
-GET     /person/get/{id} (...)
-GET     /person/remove (...)
-POST    /person/save (...)
+GET     /person (...)
+GET     /person/{id} (...)
+DELETE  /person/{id} (...)
+POST    /person (...)
 ```
 
- List with all persons can be found on this URL: http://localhost:9000/person/all. You can get person by id: http://localhost:9000/person/get/1.
+ List with all persons can be found on this URL: http://localhost:9000/person. You can get person by id: http://localhost:9000/person/1.
 
-Health checks are found in admin panel: http://localhost:9001. Try removing all persons by invoking several times this URL: http://localhost:9000/person/remove
+Health checks are found in admin panel: http://localhost:9001. remove items by sending a delete to URL: http://localhost:9000/person/1
+
+swagger available via http://localhost:9000/swagger

@@ -3,6 +3,7 @@ package com.benaowen.reststub.resources;
 import com.benaowen.reststub.data.Person;
 import com.benaowen.reststub.persistence.PersonDB;
 import com.codahale.metrics.annotation.Timed;
+import io.swagger.annotations.Api;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by benowen on 29/08/2017.
  */
+@Api(value="/person", description="Operations on the person object")
 @Path("/person")
 public class PersonService {
     public PersonService() {
@@ -18,24 +20,24 @@ public class PersonService {
 
     @GET
     @Timed
-    @Path("/get/{id}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Person getPerson(@PathParam("id") int id) {
         return PersonDB.getById(id);
     }
 
-    @GET
+    @DELETE
     @Timed
-    @Path("/remove")
+    @Path("/{id}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String removePerson() {
-        PersonDB.remove();
-        return "Last person remove. Total count: " + PersonDB.getCount();
+    public String removePerson(@PathParam("id") int id) {
+        PersonDB.remove(id);
+        return "removed id "+id;
     }
 
     @GET
     @Timed
-    @Path("/all")
+    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Person> getPersons() {
         return PersonDB.getAll();
@@ -43,7 +45,7 @@ public class PersonService {
 
     @POST
     @Timed
-    @Path("/save")
+    @Path("/")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes({MediaType.APPLICATION_JSON})
     public String addPerson(Person person) {
