@@ -2,10 +2,8 @@ package com.benaowen.reststub.persistence;
 
 import com.benaowen.reststub.data.Person;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import javax.ws.rs.core.Response;
 
 /**
  * Created by benowen on 29/08/2017.
@@ -42,14 +40,19 @@ public class PersonDB {
         }
     }
 
-    public static String save(Person person) {
+    public static Person save(Person person) {
         String result = "";
+        int maxKey = Collections.max(persons.keySet());
+        if (person.getId() == 0) {
+            person.setId(maxKey+1);
+        }
         if (persons.get(person.getId()) != null) {
             result = "Updated Person with id=" + person.getId();
         } else {
             result = "Added Person with id=" + person.getId();
         }
+        System.out.println(result);
         persons.put(person.getId(), person);
-        return result;
+        return person;
     }
 }

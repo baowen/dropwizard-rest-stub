@@ -27,6 +27,8 @@ public class Person {
         return id;
     }
 
+    public void setId( int id) { this.id = id;}
+
     @JsonProperty
     public String getFirstName() {
         return firstName;
